@@ -87,11 +87,31 @@ addPolypharmacyCount <- function(x,
       cdm$drug_era |>
         dplyr::select(dplyr::all_of(sel)),
       by = personId
-    ) |>
-    dplyr::filter(
-      clock::date_count_between(start = .data[[indexDate]], end = .data[[ids[2]]], precision = "day") >= .env$win1 &
-        clock::date_count_between(start = .data[[indexDate]], end = .data[[ids[1]]], precision = "day") <= .env$win2
-    ) |>
+    )
+
+  if (is.infinite(win1)) {
+    if (!is.infinite(win2)) {
+      x_counts <- x_counts |>
+        dplyr::filter(
+          clock::date_count_between(start = .data[[indexDate]], end = .data[[ids[1]]], precision = "day") <= .env$win2
+        )
+    }
+  } else {
+    if (is.infinite(win2)) {
+      x_counts <- x_counts |>
+        dplyr::filter(
+          clock::date_count_between(start = .data[[indexDate]], end = .data[[ids[2]]], precision = "day") >= .env$win1
+        )
+    } else {
+      x_counts <- x_counts |>
+        dplyr::filter(
+          clock::date_count_between(start = .data[[indexDate]], end = .data[[ids[2]]], precision = "day") >= .env$win1 &
+            clock::date_count_between(start = .data[[indexDate]], end = .data[[ids[1]]], precision = "day") <= .env$win2
+        )
+    }
+  }
+
+  x_counts <- x_counts |>
     dplyr::compute(name = nm1)
 
   # calculate number exposures
