@@ -52,7 +52,7 @@ addCharlsonIndex <- function(x,
                              ageAdjusted = TRUE,
                              window = c(-Inf, 0),
                              conceptSet = getIndexCodelist("charlson"),
-                             nameStyle = "charlson_index",
+                             nameStyle = "charlson",
                              categories = NULL,
                              name = tableName(x)) {
   addIndex(
