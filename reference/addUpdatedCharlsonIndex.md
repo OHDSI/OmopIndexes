@@ -12,7 +12,7 @@ addUpdatedCharlsonIndex(
   ageAdjusted = TRUE,
   window = c(-Inf, 0),
   conceptSet = getIndexCodelist("updated_charlson"),
-  nameStyle = "charlson_index",
+  nameStyle = "updated_charlson",
   categories = NULL,
   name = tableName(x)
 )
@@ -120,5 +120,5 @@ cdm$cohort |>
 #>  9                    1         18 1984-10-25        2003-05-21     
 #> 10                    1         18 2004-11-04        2010-08-07     
 #> # ℹ 2,684 more rows
-#> # ℹ 1 more variable: charlson_index <dbl>
+#> # ℹ 1 more variable: updated_charlson <dbl>
 ```

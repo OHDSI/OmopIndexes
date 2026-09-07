@@ -14,7 +14,7 @@ addCharlsonIndex(
   ageAdjusted = TRUE,
   window = c(-Inf, 0),
   conceptSet = getIndexCodelist("charlson"),
-  nameStyle = "charlson_index",
+  nameStyle = "charlson",
   categories = NULL,
   name = tableName(x)
 )
@@ -114,18 +114,17 @@ cdm$cohort |>
 #> ℹ Supported domains are: device, specimen, measurement, drug, condition,
 #>   observation, procedure, episode, and visit.
 #> # A tibble: 2,694 × 5
-#>    cohort_definition_id subject_id cohort_start_date cohort_end_date
-#>  *                <int>      <int> <date>            <date>         
-#>  1                    1          1 1992-08-21        2001-11-26     
-#>  2                    1          2 1986-05-10        2000-03-13     
-#>  3                    1          7 1971-04-25        1977-08-27     
-#>  4                    1          9 1991-08-07        2003-06-27     
-#>  5                    1          9 2009-09-14        2010-09-07     
-#>  6                    1         11 1993-11-14        1999-06-12     
-#>  7                    1         11 1999-06-13        2012-03-19     
-#>  8                    1         12 2007-06-30        2010-06-05     
-#>  9                    1         12 2010-06-06        2010-08-27     
-#> 10                    1         16 1990-08-22        1994-07-07     
+#>    cohort_definition_id subject_id cohort_start_date cohort_end_date charlson
+#>  *                <int>      <int> <date>            <date>             <dbl>
+#>  1                    1          1 1992-08-21        2001-11-26             1
+#>  2                    1          2 1986-05-10        2000-03-13             2
+#>  3                    1          7 1971-04-25        1977-08-27             0
+#>  4                    1          9 1991-08-07        2003-06-27             0
+#>  5                    1          9 2009-09-14        2010-09-07             0
+#>  6                    1         11 1993-11-14        1999-06-12             0
+#>  7                    1         11 1999-06-13        2012-03-19             0
+#>  8                    1         12 2007-06-30        2010-06-05             1
+#>  9                    1         12 2010-06-06        2010-08-27             1
+#> 10                    1         16 1990-08-22        1994-07-07             0
 #> # ℹ 2,684 more rows
-#> # ℹ 1 more variable: charlson_index <dbl>
 ```
