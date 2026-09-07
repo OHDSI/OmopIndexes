@@ -62,7 +62,7 @@ cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 #> ℹ Creating local <cdm_reference> object.
 #> ℹ Inserting <cdm_reference> into duckdb.
 #> duckdb keeps downloaded extensions and secrets in a temporary directory:
-#> ℹ /tmp/RtmphoHSlh/duckdb
+#> ℹ /tmp/RtmpYdjZvv/duckdb
 #> This is removed when the R session ends.
 #> • Extensions are re-downloaded each session.
 #> • Secrets are lost.
@@ -75,18 +75,18 @@ cdm$condition_occurrence |>
   select("person_id", "condition_start_date") |>
   addPolypharmacyCount(indexDate = "condition_start_date")
 #> # A query:  ?? x 3
-#> # Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/RtmphoHSlh/file19edc52267.duckdb]
+#> # Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/RtmpYdjZvv/file1c90384a7529.duckdb]
 #>    person_id condition_start_date polypharmacy_count
 #>        <int> <date>                            <int>
-#>  1      2359 2003-08-02                            0
-#>  2      3488 1997-07-14                            0
-#>  3      2414 1968-11-02                            0
-#>  4      3831 1997-02-24                            0
-#>  5      4269 1997-11-17                            0
-#>  6      1518 2016-10-01                            0
-#>  7      1339 2005-01-17                            0
-#>  8      4191 1962-03-21                            0
-#>  9      4653 1986-05-29                            0
-#> 10      3909 1999-08-29                            0
+#>  1      5037 1985-06-22                            0
+#>  2       887 2007-06-12                            0
+#>  3       245 1984-02-25                            0
+#>  4       565 1958-07-19                            0
+#>  5      1250 1987-05-13                            0
+#>  6      2424 2004-04-19                            0
+#>  7      3427 1970-06-09                            0
+#>  8      2266 2008-04-28                            0
+#>  9        12 1970-09-20                            0
+#> 10      1526 1991-01-04                            0
 # }
 ```
