@@ -29,7 +29,7 @@ addHospitalFrailtyRiskScore <- function(x,
                                         name = tableName(x)) {
   addIndex(
     x = x,
-    type = "hfrs",
+    type = "hospital_frailty_risk_score",
     indexDate = indexDate,
     window = window,
     conceptSet = conceptSet,
