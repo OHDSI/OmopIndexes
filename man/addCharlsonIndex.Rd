@@ -11,7 +11,6 @@ addCharlsonIndex(
   x,
   indexDate = "cohort_start_date",
   ageAdjusted = TRUE,
-  window = c(-Inf, 0),
   conceptSet = getIndexCodelist("charlson"),
   nameStyle = "charlson",
   categories = NULL,
@@ -27,14 +26,12 @@ table.}
 
 \item{ageAdjusted}{Whether to calculate the Age-Adjusted Comorbidity Index (TRUE) or not (FALSE)}
 
-\item{window}{Window to asses \verb{Charlson index} in, it must be a vector of two numeric values \code{c(min, max)}. Window times refer to days since \code{indexDate}.}
-
 \item{conceptSet}{It can either be a \if{html}{\out{<codelist>}}, <codelist_with_details> or <concept_set_expression> object. It must contain \code{myocardial_infarction}, \code{congestive_heart_failure}, \code{peripheral_vascular_disease}, \code{cerebrovascular_disease}, \code{dementia}, \code{chronic_pulmonary_disease}, \code{connective_tissue_disease}, \code{peptic_ulcer_disease}, \code{mild_liver_disease}, \code{diabetes_without_complication}, \code{hemiplegia}, \code{severe_chronic_kidney_disease}, \code{diabetes_with_complication}, \code{any_malignancy}, \code{moderate_or_severe_liver_disease}, \code{metastatic_solid_tumor}, \code{aids} as concepts. By default internal concepts are used.}
 
 \item{nameStyle}{A character string with the name of the new column.}
 
 \item{categories}{Named list of categories to group the values. A new column named
-'{nameStyle}_categories' will be added with the different groups.}
+'\{nameStyle\}_categories' will be added with the different groups.}
 
 \item{name}{A character string with the name of the new table. If \code{NULL} a
 temporary table will be created.}

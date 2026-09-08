@@ -86,7 +86,6 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = FALSE,
-                                     window = c(-Inf, 0),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci",
                                      categories = NULL))
@@ -98,7 +97,6 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = TRUE,
-                                     window = c(-Inf, 0),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci_aa",
                                      categories = NULL))
@@ -110,24 +108,12 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = FALSE,
-                                     window = c(0, Inf),
-                                     conceptSet = conceptSet,
-                                     nameStyle = "cci_w",
-                                     categories = NULL))
-  expect_identical(cdm[["cohort"]] |>
-                     dplyr::pull("cci_w"),
-                   c(0, 0, 0, 6))
-
-  expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
-                    addCharlsonIndex(indexDate = "cohort_start_date",
-                                     ageAdjusted = FALSE,
-                                     window = c(0, Inf),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci_w",
                                      categories = list("low" = c(0,1), "high" = c(1,Inf))))
   expect_identical(cdm[["cohort"]] |>
                      colnames(),
-                   c("cohort_definition_id", "subject_id",  "cohort_start_date", "cohort_end_date",
+                     c("cohort_definition_id", "subject_id",  "cohort_start_date", "cohort_end_date",
                      "cci", "cci_aa", "cci_w", "cci_w_categories"))
 
   CDMConnector::cdmDisconnect(cdm)

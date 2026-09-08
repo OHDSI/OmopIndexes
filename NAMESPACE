@@ -3,7 +3,6 @@
 export(addBMI)
 export(addCharlsonIndex)
 export(addElectronicFrailtyIndex)
-export(addElectronicFrailtyIndex2)
 export(addEthnicity)
 export(addHospitalFrailtyRiskScore)
 export(addIndexOfMultipleDeprivation)

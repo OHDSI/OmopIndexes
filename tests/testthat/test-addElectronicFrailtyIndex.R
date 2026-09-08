@@ -112,7 +112,6 @@ test_that("efi works", {
 
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addElectronicFrailtyIndex(indexDate = "cohort_start_date",
-                                              window = c(-Inf, 0),
                                               conceptSet = conceptSet,
                                               nameStyle = "efi",
                                               categories = NULL))
@@ -120,16 +119,6 @@ test_that("efi works", {
   expect_equal(cdm[["cohort"]] |>
                  dplyr::pull("efi"),
                c(3/36, 35/36, 7/36, 0))
-
-  expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
-                    addElectronicFrailtyIndex(indexDate = "cohort_start_date",
-                                              window = c(0, Inf),
-                                              conceptSet = conceptSet,
-                                              nameStyle = "efi_w",
-                                              categories = NULL))
-  expect_identical(cdm[["cohort"]] |>
-                     dplyr::pull("efi_w"),
-                   c(0, 0, 0, 1/36))
 
   CDMConnector::cdmDisconnect(cdm)
 

@@ -53,7 +53,7 @@ addIndex <- function(x,
     index <- index |>
       addPolypharmacyCount(
         indexDate = indexDate,
-        window = window,
+        window = c(-365, 0),
         nameStyle = "polypharmacy_count",
         name = nm
       )
