@@ -27,8 +27,8 @@ table.}
 
 \item{conceptSet}{It can either be a \if{html}{\out{<codelist>}}, <codelist_with_details> or <concept_set_expression> object. It must contain \code{activity_limitation}, \code{alcohol_harmful_intake}, \code{alcohol_missing}, \code{alcohol_previous_harmful_higher}, \code{atrial_fibrillation}, \code{cancer}, \code{cognitive_impairment}, \code{copd}, \code{dementia}, \code{dressing_grooming_problems}, \code{environment_problems}, \code{falls}, \code{fracture}, \code{fragility_fracture}, \code{heart_failure}, \code{housebound}, \code{hypotension_syncope}, \code{liver_problems}, \code{medication_management_problems}, \code{memory_concerns}, \code{mobility_problems}, \code{motor_neuron_disease}, \code{palliative_care}, \code{parkinsonism_tremor}, \code{peptic_ulcer}, \code{peripheral_vascular_disease}, \code{care_requirement}, \code{respiratory_disease}, \code{seizures}, \code{self_harm}, \code{skin_ulcer}, \code{smoker_current}, \code{social_vulnerability}, \code{stroke}, \code{transient_ischemic_attack}, \code{weight_loss_anorexia}, \code{bmi} as concepts. By default internal concepts are used.}
 
-\item{categories}{Named list of categories to group the values. If NULL the
-risk score is returned as numeric.}
+\item{categories}{Named list of categories to group the values. A new column named
+'{nameStyle}_categories' will be added with the different groups.}
 
 \item{nameStyle}{A character string with the name of the new column.}
 
