@@ -51,11 +51,21 @@ cli::cli_inform("Eliminated {n - nt} rows because omop concept id is NA")
 ingredients <- ingredients |>
   dplyr::left_join(
     cdm$concept_ancestor |>
-      dplyr::select("concept_id" = "descendant_concept_id", "igredient_id" = "ancestor_concept_id") |>
+      dplyr::select("omop_concept_id" = "descendant_concept_id", "ingredient_id" = "ancestor_concept_id") |>
       dplyr::inner_join(
         cdm$concept |>
           dplyr::filter(concept_class_id == "Ingredient") |>
-          dplyr::select()
+          dplyr::select("ingredient_id" = "concept_id"),
+        by = "ingredient_id"
       ),
-    by = "concept_id"
+    by = "omop_concept_id",
+    relationship = "many-to-many"
   )
+
+n <- nrow(ingredients)
+ingredients <- ingredients |>
+  dplyr::filter(!is.na(ingredient_id))
+nt <- nrow(ingredients)
+cli::cli_inform("Eliminated {n - nt} rows because omop concept id does not have ingredient")
+
+
