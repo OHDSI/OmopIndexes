@@ -9,7 +9,6 @@ Add Electronic Frailty Index (eFI) value based on [Clegg et al.
 addElectronicFrailtyIndex(
   x,
   indexDate = "cohort_start_date",
-  window = c(-Inf, 0),
   conceptSet = getIndexCodelist("electronic_frailty_index"),
   categories = list(fit = c(0, 0.12), mild = c(0.12, 0.24), moderate = c(0.24, 0.36),
     severe = c(0.36, 1)),
@@ -28,12 +27,6 @@ addElectronicFrailtyIndex(
 - indexDate:
 
   A character string that points to a `Date` column in the `x` table.
-
-- window:
-
-  Window to asses `electronic frailty index` in, it must be a vector of
-  two numeric values `c(min, max)`. Window times refer to days since
-  `indexDate`.
 
 - conceptSet:
 
@@ -55,7 +48,7 @@ addElectronicFrailtyIndex(
 - categories:
 
   Named list of categories to group the values. A new column named
-  'nameStyle_categories' will be added with the different groups.
+  '{nameStyle}\_categories' will be added with the different groups.
 
 - nameStyle:
 

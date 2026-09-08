@@ -6,7 +6,7 @@ The core functions in **OmopIndices** add indexes to a table:
 - [`addUpdatedCharlsonIndex()`](https://OHDSI.github.io/OmopIndices/reference/addUpdatedCharlsonIndex.md)
 - [`addHospitalFrailtyRiskScore()`](https://OHDSI.github.io/OmopIndices/reference/addHospitalFrailtyRiskScore.md)
 - [`addElectronicFrailtyIndex()`](https://OHDSI.github.io/OmopIndices/reference/addElectronicFrailtyIndex.md)
-- [`addElectronicFrailtyIndex2()`](https://OHDSI.github.io/OmopIndices/reference/addElectronicFrailtyIndex2.md)
+- `addElectronicFrailtyIndex2()`
 
 These indices depend on a set of codelists, these codelist can be
 provided by the user using the `conceptSet` argument. If not provided

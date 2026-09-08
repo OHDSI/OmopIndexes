@@ -50,7 +50,6 @@ Quan et al. (2011)"></head><body>
 <span>  <span class="va">x</span>,</span>
 <span>  indexDate <span class="op">=</span> <span class="st">"cohort_start_date"</span>,</span>
 <span>  ageAdjusted <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  conceptSet <span class="op">=</span> <span class="fu"><a href="getIndexCodelist.html">getIndexCodelist</a></span><span class="op">(</span><span class="st">"updated_charlson"</span><span class="op">)</span>,</span>
 <span>  nameStyle <span class="op">=</span> <span class="st">"updated_charlson"</span>,</span>
 <span>  categories <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -76,10 +75,6 @@ table.</p></dd>
 <dd><p>Whether to calculate the Age-Adjusted Comorbidity Index (TRUE) or not (FALSE)</p></dd>
 
 
-<dt id="arg-window">window<a class="anchor" aria-label="anchor" href="#arg-window"></a></dt>
-<dd><p>Window to asses <code>Charlson index</code> in, it must be a vector of two numeric values <code>c(min, max)</code>. Window times refer to days since <code>indexDate</code>.</p></dd>
-
-
 <dt id="arg-conceptset">conceptSet<a class="anchor" aria-label="anchor" href="#arg-conceptset"></a></dt>
 <dd><p>It can either be a <codelist>, &lt;codelist_with_details&gt; or &lt;concept_set_expression&gt; object. It must contain <code>congestive_heart_failure</code>, <code>dementia</code>, <code>chronic_pulmonary_disease</code>, <code>connective_tissue_disease</code>, <code>mild_liver_disease</code>, <code>hemiplegia</code>, <code>severe_chronic_kidney_disease</code>, <code>diabetes_with_complication</code>, <code>any_malignancy</code>, <code>moderate_or_severe_liver_disease</code>, <code>metastatic_solid_tumor</code>, <code>aids</code> as concepts. By default internal concepts are used.</codelist></p></dd>
 
@@ -90,7 +85,7 @@ table.</p></dd>
 
 <dt id="arg-categories">categories<a class="anchor" aria-label="anchor" href="#arg-categories"></a></dt>
 <dd><p>Named list of categories to group the values. A new column named
-'nameStyle_categories' will be added with the different groups.</p></dd>
+'{nameStyle}_categories' will be added with the different groups.</p></dd>
 
 
 <dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>

@@ -12,7 +12,6 @@ addCharlsonIndex(
   x,
   indexDate = "cohort_start_date",
   ageAdjusted = TRUE,
-  window = c(-Inf, 0),
   conceptSet = getIndexCodelist("charlson"),
   nameStyle = "charlson",
   categories = NULL,
@@ -36,12 +35,6 @@ addCharlsonIndex(
   Whether to calculate the Age-Adjusted Comorbidity Index (TRUE) or not
   (FALSE)
 
-- window:
-
-  Window to asses `Charlson index` in, it must be a vector of two
-  numeric values `c(min, max)`. Window times refer to days since
-  `indexDate`.
-
 - conceptSet:
 
   It can either be a , \<codelist_with_details\> or
@@ -63,7 +56,7 @@ addCharlsonIndex(
 - categories:
 
   Named list of categories to group the values. A new column named
-  'nameStyle_categories' will be added with the different groups.
+  '{nameStyle}\_categories' will be added with the different groups.
 
 - name:
 

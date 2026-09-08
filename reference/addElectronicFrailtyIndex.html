@@ -49,7 +49,6 @@ Clegg et al. (2016)"></head><body>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">addElectronicFrailtyIndex</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  indexDate <span class="op">=</span> <span class="st">"cohort_start_date"</span>,</span>
-<span>  window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  conceptSet <span class="op">=</span> <span class="fu"><a href="getIndexCodelist.html">getIndexCodelist</a></span><span class="op">(</span><span class="st">"electronic_frailty_index"</span><span class="op">)</span>,</span>
 <span>  categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.12</span><span class="op">)</span>, mild <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.12</span>, <span class="fl">0.24</span><span class="op">)</span>, moderate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.24</span>, <span class="fl">0.36</span><span class="op">)</span>,</span>
 <span>    severe <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.36</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -72,17 +71,13 @@ columns.</p></dd>
 table.</p></dd>
 
 
-<dt id="arg-window">window<a class="anchor" aria-label="anchor" href="#arg-window"></a></dt>
-<dd><p>Window to asses <code>electronic frailty index</code> in, it must be a vector of two numeric values <code>c(min, max)</code>. Window times refer to days since <code>indexDate</code>.</p></dd>
-
-
 <dt id="arg-conceptset">conceptSet<a class="anchor" aria-label="anchor" href="#arg-conceptset"></a></dt>
 <dd><p>It can either be a <codelist>, &lt;codelist_with_details&gt; or &lt;concept_set_expression&gt; object. It must contain <code>activity_limitation</code>, <code>anemia</code>, <code>arthritis</code>, <code>atrial_fibrillation</code>, <code>cerebrovascular_disease</code>, <code>chronic_kidney_disease</code>, <code>diabetes</code>, <code>dizziness</code>, <code>dyspnea</code>, <code>falls</code>, <code>foot_problem</code>, <code>fragility_fracture</code>, <code>hearing_impairment</code>, <code>heart_failure</code>, <code>heart_valve_disorder</code>, <code>housebound</code>, <code>hypertension</code>, <code>hypotension_syncope</code>, <code>ischemic_heart_disease</code>, <code>memory_cognitive_disorder</code>, <code>mobility_problems</code>, <code>osteoporosis</code>, <code>parkinsonism_tremor</code>, <code>peptic_ulcer</code>, <code>peripheral_vascular_disease</code>, <code>care_requirement</code>, <code>respiratory_disease</code>, <code>skin_ulcer</code>, <code>sleep_disturbance</code>, <code>social_vulnerability</code>, <code>thyroid_disease</code>, <code>urinary_incontinence</code>, <code>urinary_system_disease</code>, <code>visual_impairment</code>, <code>weight_loss_anorexia</code> as concepts. By default internal concepts are used.</codelist></p></dd>
 
 
 <dt id="arg-categories">categories<a class="anchor" aria-label="anchor" href="#arg-categories"></a></dt>
 <dd><p>Named list of categories to group the values. A new column named
-'nameStyle_categories' will be added with the different groups.</p></dd>
+'{nameStyle}_categories' will be added with the different groups.</p></dd>
 
 
 <dt id="arg-namestyle">nameStyle<a class="anchor" aria-label="anchor" href="#arg-namestyle"></a></dt>

@@ -9,7 +9,6 @@ Add the hospital frailty risk score as defined in [Gilbert et al.
 addHospitalFrailtyRiskScore(
   x,
   indexDate = "cohort_start_date",
-  window = c(-730, 0),
   conceptSet = getIndexCodelist("hospital_frailty_risk_score"),
   categories = list(low = c(0, 5), intermediate = c(5, 15), high = c(15, Inf)),
   nameStyle = "hfrs",
@@ -27,12 +26,6 @@ addHospitalFrailtyRiskScore(
 - indexDate:
 
   A character string that points to a `Date` column in the `x` table.
-
-- window:
-
-  Window to asses `hospital frailty risk score` in, it must be a vector
-  of two numeric values `c(min, max)`. Window times refer to days since
-  `indexDate`.
 
 - conceptSet:
 
@@ -112,7 +105,7 @@ addHospitalFrailtyRiskScore(
 - categories:
 
   Named list of categories to group the values. A new column named
-  'nameStyle_categories' will be added with the different groups.
+  '{nameStyle}\_categories' will be added with the different groups.
 
 - nameStyle:
 
