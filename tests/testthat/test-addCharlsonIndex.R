@@ -86,7 +86,6 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = FALSE,
-                                     window = c(-Inf, 0),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci",
                                      categories = NULL))
@@ -98,7 +97,6 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = TRUE,
-                                     window = c(-Inf, 0),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci_aa",
                                      categories = NULL))
@@ -106,17 +104,6 @@ test_that("CCI works", {
   expect_identical(cdm[["cohort"]] |>
                      dplyr::pull("cci_aa"),
                    c(5, 30, 13, 0))
-
-  expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
-                    addCharlsonIndex(indexDate = "cohort_start_date",
-                                     ageAdjusted = FALSE,
-                                     window = c(0, Inf),
-                                     conceptSet = conceptSet,
-                                     nameStyle = "cci_w",
-                                     categories = NULL))
-  expect_identical(cdm[["cohort"]] |>
-                     dplyr::pull("cci_w"),
-                   c(0, 0, 0, 6))
 
   CDMConnector::cdmDisconnect(cdm)
 })
