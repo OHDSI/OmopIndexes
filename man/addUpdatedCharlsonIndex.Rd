@@ -29,7 +29,7 @@ table.}
 \item{nameStyle}{A character string with the name of the new column.}
 
 \item{categories}{Named list of categories to group the values. A new column named
-'{nameStyle}_categories' will be added with the different groups.}
+'\{nameStyle\}_categories' will be added with the different groups.}
 
 \item{name}{A character string with the name of the new table. If \code{NULL} a
 temporary table will be created.}
