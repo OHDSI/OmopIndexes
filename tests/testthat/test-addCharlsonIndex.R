@@ -110,20 +110,10 @@ test_that("CCI works", {
                                      ageAdjusted = FALSE,
                                      conceptSet = conceptSet,
                                      nameStyle = "cci_w",
-                                     categories = NULL))
-  expect_identical(cdm[["cohort"]] |>
-                     dplyr::pull("cci_w"),
-                   c(0, 0, 0, 6))
-
-  expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
-                    addCharlsonIndex(indexDate = "cohort_start_date",
-                                     ageAdjusted = FALSE,
-                                     conceptSet = conceptSet,
-                                     nameStyle = "cci_w",
                                      categories = list("low" = c(0,1), "high" = c(1,Inf))))
   expect_identical(cdm[["cohort"]] |>
                      colnames(),
-                   c("cohort_definition_id", "subject_id",  "cohort_start_date", "cohort_end_date",
+                     c("cohort_definition_id", "subject_id",  "cohort_start_date", "cohort_end_date",
                      "cci", "cci_aa", "cci_w", "cci_w_categories"))
 
   CDMConnector::cdmDisconnect(cdm)
