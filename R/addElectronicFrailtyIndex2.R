@@ -9,7 +9,6 @@
 #'
 #' @inheritParams xDoc
 #' @inheritParams indexDateDoc
-#' @param window `r documentationWindow("electronic frailty index 2")`
 #' @param conceptSet
 #' `r documentationConceptSet(requiredConcepts$electronic_frailty_index_2)`
 #' @inheritParams categoriesDoc
@@ -18,11 +17,10 @@
 #'
 #' @returns The `x` table with a new eFI2 score column.
 #'
-#' @export
+#' @noRd
 #'
 addElectronicFrailtyIndex2 <- function(x,
                                        indexDate = "cohort_start_date",
-                                       window = c(-Inf, 0),
                                        conceptSet = getIndexCodelist("electronic_frailty_index_2"),
                                        categories = list(
                                          "robust" = c(0, 0.0857),
@@ -36,7 +34,7 @@ addElectronicFrailtyIndex2 <- function(x,
     x = x,
     type = "electronic_frailty_index_2",
     indexDate = indexDate,
-    window = window,
+    window = c(-Inf, 0),
     conceptSet = conceptSet,
     categories = categories,
     nameStyle = nameStyle,
