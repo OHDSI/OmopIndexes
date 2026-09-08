@@ -127,7 +127,8 @@ test_that("CCI works", {
                                      categories = list("low" = c(0,1), "high" = c(1,Inf))))
   expect_identical(cdm[["cohort"]] |>
                      colnames(),
-                   c("cohort_definition_id", "subject_id",  "cohort_start_date", "cohort_end_date", "cci_w", "cci_w_categories"))
+                   c("cohort_definition_id", "subject_id",  "cohort_start_date", "cohort_end_date",
+                     "cci", "cci_aa", "cci_w", "cci_w_categories"))
 
   CDMConnector::cdmDisconnect(cdm)
 })
