@@ -76,7 +76,7 @@ addIndex <- function(x,
 
   if (!is.null(categories)) {
     qc <- qCategories(categories) |>
-      rlang::set_names(nameStyle) |>
+      rlang::set_names(paste0(nameStyle, "_categories")) |>
       rlang::parse_exprs()
     index <- index |>
       dplyr::mutate(!!!qc) |>

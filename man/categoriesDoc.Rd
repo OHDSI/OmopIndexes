@@ -4,8 +4,8 @@
 \alias{categoriesDoc}
 \title{Helper for consistent documentation of \code{categories} argument}
 \arguments{
-\item{categories}{Named list of categories to group the values. If NULL the
-risk score is returned as numeric.}
+\item{categories}{Named list of categories to group the values. A new column named
+'{nameStyle}_categories' will be added with the different groups.}
 }
 \description{
 Helper for consistent documentation of \code{categories} argument
