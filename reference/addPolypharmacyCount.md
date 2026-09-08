@@ -62,7 +62,7 @@ cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 #> ℹ Creating local <cdm_reference> object.
 #> ℹ Inserting <cdm_reference> into duckdb.
 #> duckdb keeps downloaded extensions and secrets in a temporary directory:
-#> ℹ /tmp/Rtmp71hUW8/duckdb
+#> ℹ /tmp/RtmpQfBAAU/duckdb
 #> This is removed when the R session ends.
 #> • Extensions are re-downloaded each session.
 #> • Secrets are lost.
@@ -75,18 +75,18 @@ cdm$condition_occurrence |>
   select("person_id", "condition_start_date") |>
   addPolypharmacyCount(indexDate = "condition_start_date")
 #> # A query:  ?? x 3
-#> # Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/Rtmp71hUW8/file1a1b7f482f15.duckdb]
+#> # Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/RtmpQfBAAU/file19d81efef0bb.duckdb]
 #>    person_id condition_start_date polypharmacy_count
 #>        <int> <date>                            <int>
-#>  1      3783 1969-03-21                            0
-#>  2      3439 2009-02-20                            0
-#>  3       871 1986-06-18                            0
-#>  4      2436 1960-03-27                            0
-#>  5      3695 1996-03-20                            0
-#>  6      3839 2013-08-08                            0
-#>  7      2270 1992-05-27                            0
-#>  8      3638 1988-09-19                            0
-#>  9      5236 2005-09-28                            0
-#> 10      2779 1994-11-16                            0
+#>  1      1442 1966-05-02                            0
+#>  2      3011 1995-09-21                            0
+#>  3      4491 1984-07-22                            0
+#>  4      4168 1975-09-14                            0
+#>  5      1808 1971-08-03                            0
+#>  6      3518 1992-04-21                            0
+#>  7      2380 1969-05-27                            0
+#>  8      2521 1975-09-06                            0
+#>  9       263 2016-08-28                            0
+#> 10      3569 2018-12-11                            0
 # }
 ```
