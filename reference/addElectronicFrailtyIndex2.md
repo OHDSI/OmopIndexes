@@ -58,8 +58,8 @@ addElectronicFrailtyIndex2(
 
 - categories:
 
-  Named list of categories to group the values. If NULL the risk score
-  is returned as numeric.
+  Named list of categories to group the values. A new column named
+  'nameStyle_categories' will be added with the different groups.
 
 - nameStyle:
 

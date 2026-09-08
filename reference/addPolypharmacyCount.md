@@ -62,7 +62,7 @@ cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 #> ℹ Creating local <cdm_reference> object.
 #> ℹ Inserting <cdm_reference> into duckdb.
 #> duckdb keeps downloaded extensions and secrets in a temporary directory:
-#> ℹ /tmp/RtmpQfBAAU/duckdb
+#> ℹ /tmp/RtmpJequ8o/duckdb
 #> This is removed when the R session ends.
 #> • Extensions are re-downloaded each session.
 #> • Secrets are lost.
@@ -75,18 +75,18 @@ cdm$condition_occurrence |>
   select("person_id", "condition_start_date") |>
   addPolypharmacyCount(indexDate = "condition_start_date")
 #> # A query:  ?? x 3
-#> # Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/RtmpQfBAAU/file19d81efef0bb.duckdb]
+#> # Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/RtmpJequ8o/file1af31f89a360.duckdb]
 #>    person_id condition_start_date polypharmacy_count
 #>        <int> <date>                            <int>
-#>  1      1442 1966-05-02                            0
-#>  2      3011 1995-09-21                            0
-#>  3      4491 1984-07-22                            0
-#>  4      4168 1975-09-14                            0
-#>  5      1808 1971-08-03                            0
-#>  6      3518 1992-04-21                            0
-#>  7      2380 1969-05-27                            0
-#>  8      2521 1975-09-06                            0
-#>  9       263 2016-08-28                            0
-#> 10      3569 2018-12-11                            0
+#>  1      3893 1979-10-07                            0
+#>  2      4492 1969-11-07                            0
+#>  3      3756 1985-10-01                            0
+#>  4      1231 1952-10-12                            0
+#>  5      4960 1923-08-02                            0
+#>  6       236 1983-02-11                            0
+#>  7      4949 2013-02-28                            0
+#>  8      2295 2013-09-10                            0
+#>  9      2079 2005-11-01                            0
+#> 10      3464 1997-04-15                            0
 # }
 ```

@@ -54,8 +54,8 @@ addElectronicFrailtyIndex(
 
 - categories:
 
-  Named list of categories to group the values. If NULL the risk score
-  is returned as numeric.
+  Named list of categories to group the values. A new column named
+  'nameStyle_categories' will be added with the different groups.
 
 - nameStyle:
 
@@ -133,18 +133,19 @@ cdm$cohort |>
 #> ! 30 concept(s) from domain NA eliminated as it is not supported.
 #> ℹ Supported domains are: device, specimen, measurement, drug, condition,
 #>   observation, procedure, episode, and visit.
-#> # A tibble: 2,694 × 5
-#>    cohort_definition_id subject_id cohort_start_date cohort_end_date efi  
-#>  *                <int>      <int> <date>            <date>          <chr>
-#>  1                    1          1 1960-05-13        1974-01-19      fit  
-#>  2                    1          2 1947-09-19        1949-07-27      fit  
-#>  3                    1          2 1949-07-28        2003-08-10      fit  
-#>  4                    1          3 1934-12-13        1954-08-16      fit  
-#>  5                    1          3 1954-08-17        1983-03-31      fit  
-#>  6                    1          7 1968-12-28        1974-04-18      fit  
-#>  7                    1          7 1974-04-19        1987-12-19      fit  
-#>  8                    1          7 2013-05-11        2014-05-07      fit  
-#>  9                    1         12 1977-08-23        1992-12-22      fit  
-#> 10                    1         12 2007-07-23        2010-01-24      fit  
+#> # A tibble: 2,694 × 6
+#>    cohort_definition_id subject_id cohort_start_date cohort_end_date    efi
+#>  *                <int>      <int> <date>            <date>           <dbl>
+#>  1                    1          1 1960-05-13        1974-01-19      0     
+#>  2                    1          2 1947-09-19        1949-07-27      0     
+#>  3                    1          2 1949-07-28        2003-08-10      0     
+#>  4                    1          3 1934-12-13        1954-08-16      0     
+#>  5                    1          3 1954-08-17        1983-03-31      0.0278
+#>  6                    1          7 1968-12-28        1974-04-18      0     
+#>  7                    1          7 1974-04-19        1987-12-19      0     
+#>  8                    1          7 2013-05-11        2014-05-07      0     
+#>  9                    1         12 1977-08-23        1992-12-22      0     
+#> 10                    1         12 2007-07-23        2010-01-24      0.0278
 #> # ℹ 2,684 more rows
+#> # ℹ 1 more variable: efi_categories <chr>
 ```
