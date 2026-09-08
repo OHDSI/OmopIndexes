@@ -108,7 +108,6 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = FALSE,
-                                     window = c(0, Inf),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci_w",
                                      categories = NULL))
@@ -119,7 +118,6 @@ test_that("CCI works", {
   expect_no_error(cdm[["cohort"]] <- cdm[["cohort"]] |>
                     addCharlsonIndex(indexDate = "cohort_start_date",
                                      ageAdjusted = FALSE,
-                                     window = c(0, Inf),
                                      conceptSet = conceptSet,
                                      nameStyle = "cci_w",
                                      categories = list("low" = c(0,1), "high" = c(1,Inf))))
