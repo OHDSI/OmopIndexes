@@ -4,7 +4,6 @@
 #'
 #' @inheritParams xDoc
 #' @inheritParams indexDateDoc
-#' @param window `r documentationWindow("hospital frailty risk score")`
 #' @param conceptSet
 #' `r documentationConceptSet(requiredConcepts$hospital_frailty_risk_score)`
 #' @inheritParams categoriesDoc
@@ -30,7 +29,7 @@ addHospitalFrailtyRiskScore <- function(x,
     x = x,
     type = "hospital_frailty_risk_score",
     indexDate = indexDate,
-    window = c(-730, 0),,
+    window = c(-730, 0),
     conceptSet = conceptSet,
     categories = categories,
     nameStyle = nameStyle,

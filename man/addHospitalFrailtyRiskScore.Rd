@@ -30,8 +30,6 @@ risk score is returned as numeric.}
 
 \item{name}{A character string with the name of the new table. If \code{NULL} a
 temporary table will be created.}
-
-\item{window}{Window to asses \verb{hospital frailty risk score} in, it must be a vector of two numeric values \code{c(min, max)}. Window times refer to days since \code{indexDate}.}
 }
 \value{
 The \code{x} table with a new column added with the hospital
