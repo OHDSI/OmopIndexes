@@ -7,7 +7,7 @@
 #' @inheritParams indexDateDoc
 #' @param ageAdjusted Whether to calculate the Age-Adjusted Comorbidity Index (TRUE) or not (FALSE)
 #' @param window `r documentationWindow("Charlson index")`
-#' @param conceptSet `r documentationConceptSet(requiredConcepts)`
+#' @param conceptSet `r documentationConceptSet(requiredConcepts$charlson)`
 #' @inheritParams categoriesDoc
 #' @inheritParams nameStyleDoc
 #' @inheritParams nameDoc

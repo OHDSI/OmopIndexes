@@ -14,7 +14,7 @@ requiredConcepts$charlson <- c(
   "dementia", "chronic_pulmonary_disease",
   "connective_tissue_disease", "peptic_ulcer_disease", "mild_liver_disease",
   "diabetes_without_complication", "hemiplegia",
-  "severe_chronic_kidney_disease",   "diabetes_with_complication",
+  "severe_chronic_kidney_disease", "diabetes_with_complication",
   "any_malignancy", "moderate_or_severe_liver_disease",
   "metastatic_solid_tumor", "aids"
 )
