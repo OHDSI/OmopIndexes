@@ -1,11 +1,22 @@
 Package: OmopIndices
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Patient-Level Indices from the OMOP Common Data Model Data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: c(
+    person("Martí", "Català", , "marti.catalasabate@ndorms.ox.ac.uk", 
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0003-3308-9905")),
+    person("Marta", "Alcalde", , "marta.alcaldeherraiz@ndorms.ox.ac.uk", 
+    role = c("aut"), comment = c(ORCID = "0009-0002-4405-1814"))
+    )
+Maintainer: Martí Català <marti.catalasabate@ndorms.ox.ac.uk>
+Description: Provides tools to derive standardised, reproducible patient-level
+    indices and covariates from Observational Medical Outcomes Partnership
+    Common Data Model (OMOP CDM) databases. Functions calculate comorbidity
+    and frailty scores, including the Charlson Comorbidity Index, Electronic
+    Frailty Index, and Hospital Frailty Risk Score, as well as body mass index,
+    polypharmacy, ethnicity, location, and socioeconomic status measures.
+    Results can be added directly to cohort or person-level tables and support
+    local data frames and database-backed OMOP CDM sources.
 License: Apache License (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

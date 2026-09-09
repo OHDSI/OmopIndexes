@@ -22,7 +22,6 @@ The core functions in **OmopIndices** add indexes to a table:
 - `addUpdatedCharlsonIndex()`
 - `addHospitalFrailtyRiskScore()`
 - `addElectronicFrailtyIndex()`
-- `addElectronicFrailtyIndex2()`
 
 These indices depend on a set of codelists, these codelist can be provided by
 the user using the `conceptSet` argument. If not provided the package contain
@@ -60,12 +59,6 @@ load(file = here::here("vignettes/articles/selectors.RData"))
 
 ```{r, echo=FALSE}
 #selectorEFI
-```
-
-### Electronic Frailty Index 2
-
-```{r, echo=FALSE}
-#selectorEFI2
 ```
 
 ### Hospital Frailty Risk Score
@@ -130,5 +123,3 @@ from other papers and projects:
 - **Hospital Frailty Risk Score** /@martaalcalde to explain
 
 - **Electronic Frailty Index** codelists were obtained from ...
-
-- **Electronic Frailty Index 2** codelists were obtained from ...

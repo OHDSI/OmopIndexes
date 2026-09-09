@@ -77,7 +77,9 @@ NULL
 NULL
 
 indexOptions <- function() {
+  # eFI2 is retained internally while its implementation is being developed.
   indices <- unique(internalConcepts$index)
+  indices <- indices[indices != "electronic_frailty_index_2"]
   indices <- paste0("`\"", indices, "\"`")
   indices[length(indices)] <- paste0("and ", indices[length(indices)])
   paste0(indices, collapse = ", ")
