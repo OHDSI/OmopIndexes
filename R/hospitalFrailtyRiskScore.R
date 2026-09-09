@@ -15,6 +15,27 @@
 #'
 #' @export
 #'
+#' @examples
+#' \donttest{
+#' library(omock)
+#' library(duckdb)
+#' library(OmopIndices)
+#' library(dplyr)
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
+#'
+#' cdm$cohort |>
+#'   addHospitalFrailtyRiskScore() |>
+#'   select(subject_id, cohort_start_date, hfrs, hfrs_categories) |>
+#'   glimpse()
+#' }
+#'
 addHospitalFrailtyRiskScore <- function(x,
                                         indexDate = "cohort_start_date",
                                         conceptSet = getIndexCodelist("hospital_frailty_risk_score"),

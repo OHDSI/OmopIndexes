@@ -21,6 +21,27 @@
 #'
 #' @export
 #'
+#' @examples
+#' \donttest{
+#' library(omock)
+#' library(duckdb)
+#' library(OmopIndices)
+#' library(dplyr)
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
+#'
+#' cdm$cohort |>
+#'   addSocioEconomicStatus() |>
+#'   select(subject_id, cohort_start_date, socio_economic_status) |>
+#'   glimpse()
+#' }
+#'
 addSocioEconomicStatus <- function(x,
                                    indexDate = "cohort_start_date",
                                    window = c(-Inf, Inf),
@@ -51,6 +72,27 @@ addSocioEconomicStatus <- function(x,
 #'
 #' @export
 #'
+#' @examples
+#' \donttest{
+#' library(omock)
+#' library(duckdb)
+#' library(OmopIndices)
+#' library(dplyr)
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
+#'
+#' cdm$cohort |>
+#'   addTownsend() |>
+#'   select(subject_id, cohort_start_date, socio_economic_status) |>
+#'   glimpse()
+#' }
+#'
 addTownsend <- function(x,
                         indexDate = "cohort_start_date",
                         window = c(-Inf, Inf),
@@ -79,6 +121,27 @@ addTownsend <- function(x,
 #' Deprivation value.
 #'
 #' @export
+#'
+#' @examples
+#' \donttest{
+#' library(omock)
+#' library(duckdb)
+#' library(OmopIndices)
+#' library(dplyr)
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
+#'
+#' cdm$cohort |>
+#'   addIndexOfMultipleDeprivation() |>
+#'   select(subject_id, cohort_start_date, socio_economic_status) |>
+#'   glimpse()
+#' }
 #'
 addIndexOfMultipleDeprivation <- function(x,
                                           indexDate = "cohort_start_date",

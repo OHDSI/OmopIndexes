@@ -17,16 +17,23 @@
 #'
 #' @examples
 #' \donttest{
-#' library(OmopIndices)
 #' library(omock)
+#' library(duckdb)
+#' library(OmopIndices)
 #' library(dplyr)
+#' library(CohortConstructor)
 #'
 #' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
 #'
-#' cdm$condition_occurrence |>
-#'   slice_sample(n = 10) |>
-#'   select("person_id", "condition_start_date") |>
-#'   addPolypharmacyCount(indexDate = "condition_start_date")
+#' cdm$cohort |>
+#'   addPolypharmacyCount(window = c(-30, 0)) |>
+#'   select(subject_id, cohort_start_date, polypharmacy_count) |>
+#'   glimpse()
 #' }
 #'
 addPolypharmacyCount <- function(x,

@@ -41,3 +41,25 @@ Score value.
 Add the hospital frailty risk score as defined in
 \href{https://doi.org/10.1016/S0140-6736(18)30668-8}{Gilbert et al. (2018)}
 }
+\examples{
+\donttest{
+library(omock)
+library(duckdb)
+library(OmopIndices)
+library(dplyr)
+library(CohortConstructor)
+
+cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+cdm$cohort <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+  name = "cohort"
+)
+
+cdm$cohort |>
+  addHospitalFrailtyRiskScore() |>
+  select(subject_id, cohort_start_date, hfrs, hfrs_categories) |>
+  glimpse()
+}
+
+}

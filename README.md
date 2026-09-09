@@ -1,35 +1,35 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
 
 # OmopIndices
 
 <!-- badges: start -->
-
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/OmopIndices)](https://CRAN.R-project.org/package=OmopIndices)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN status](https://www.r-pkg.org/badges/version/OmopIndices)](https://CRAN.R-project.org/package=OmopIndices)
 [![R-CMD-check](https://github.com/OHDSI/OmopIndices/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OHDSI/OmopIndices/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/OHDSI/OmopIndices/graph/badge.svg)](https://app.codecov.io/gh/OHDSI/OmopIndices)
+[![Codecov test coverage](https://codecov.io/gh/OHDSI/OmopIndices/graph/badge.svg)](https://app.codecov.io/gh/OHDSI/OmopIndices)
 <!-- badges: end -->
 
 The goal of **OmopIndices** is to enable standardised and reproducible
-derivation of clinically and epidemiologically relevant patient-level
-indices and covariates directly from OMOP CDM database instances.
+derivation of clinically and epidemiologically relevant patient-level indices
+and covariates directly from OMOP CDM database instances.
 
 ## Ecosystem
 
 *OmopIndices* is part of the ecosystem of packages defined by
-[omopgenerics](https://darwin-eu.github.io/omopgenerics/). For more
-details on the ecosystem you can read the [Tidy R programming with the
-OMOP Common Data
-Model](https://ohdsi.github.io/Tidy-R-programming-with-OMOP/) book.
+[omopgenerics](https://darwin-eu.github.io/omopgenerics/). For more details on
+the ecosystem you can read the [Tidy R programming with the OMOP Common Data Model](https://ohdsi.github.io/Tidy-R-programming-with-OMOP/)
+book.
 
 ## Tested sources
 
 | Source | Driver | CDM reference | Status |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Local R data frame | N/A | `omopgenerics::cdmFromTables()` | ![](https://img.shields.io/github/actions/workflow/status/OHDSI/OmopIndices/test-weekly.yaml?branch=main&job=local-omopgenerics) |
 | In-memory DuckDB database | duckdb | `CDMConnector::cdmFromCon()` | ![](https://img.shields.io/github/actions/workflow/status/OHDSI/OmopIndices/test-weekly.yaml?branch=main&job=duckdb-CDMConnector) |
 
@@ -37,12 +37,14 @@ Model](https://ohdsi.github.io/Tidy-R-programming-with-OMOP/) book.
 
 You can install the CRAN version of OmopIndices as:
 
+
 ``` r
 install.packages("OmopIndices")
 ```
 
 Or you can install the development version of OmopIndices from
 [GitHub](https://github.com/) with:
+
 
 ``` r
 # install.packages("pak")
@@ -67,8 +69,8 @@ that identifies the index date.
 The index functions use OMOP concepts from the supplied `conceptSet` to find
 records in the requested window. By default, the package uses internal concept
 sets that can be inspected using `getIndexCodelist()`. A concept set can also be
-supplied as a `codelist`, `codelist_with_details`, or
-`concept_set_expression` object.
+supplied as a `codelist`, `codelist_with_details`, or `concept_set_expression`
+object.
 
 ## Examples
 
@@ -79,6 +81,7 @@ table. For index-based measures, the default index date is
 `cohort_start_date`; use `indexDate` to select another `Date` column. Windows
 are expressed in days relative to the index date, so `c(-365, 0)` means the
 year before and including the index date.
+
 
 ``` r
 library(omock)
@@ -105,6 +108,7 @@ frailty scores can also add a categorical classification of the score. The
 package provides default categories for the Electronic Frailty Index and
 Hospital Frailty Risk Score; these can be overridden with `categories`.
 
+
 ``` r
 comorbidity <- cdm$cohort |>
   addCharlsonIndex(ageAdjusted = TRUE) |>
@@ -120,16 +124,35 @@ comorbidity <- cdm$cohort |>
 
 comorbidity |>
   select(subject_id, cohort_start_date, charlson, updated_charlson, efi,
-         hfrs, hfrs_categories) |>
+         efi_categories, hfrs, hfrs_categories) |>
   glimpse()
+#> Rows: ??
+#> Columns: 8
+#> Database: DuckDB 1.5.5 [root@Darwin 25.6.0:R 4.4.1//private/var/folders/pl/k11lm9710hlgl02nvzx4z9wr0000gp/T/Rtmpl3dLrW/file6c1d5e3b0504.duckdb]
+#> $ subject_id        <int> 3422, 3946, 1309, 1303, 5277, 2206, 5213, 3572, 4668…
+#> $ cohort_start_date <date> 2006-12-16, 1992-06-28, 1980-09-24, 2013-07-17, 198…
+#> $ charlson          <dbl> 0, 1, 0, 1, 0, 1, 1, 2, 0, 0, 4, 3, 0, 0, 1, 1, 0, 2…
+#> $ updated_charlson  <dbl> 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 3, 0, 0, 0, 1, 0, 1…
+#> $ efi               <dbl> 0.05555556, 0.02777778, 0.02777778, 0.05555556, 0.02…
+#> $ efi_categories    <chr> "fit", "fit", "fit", "fit", "fit", "fit", "fit", "fi…
+#> $ hfrs              <dbl> 0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.…
+#> $ hfrs_categories   <chr> "low", "low", "low", "low", "low", "low", "low", "lo…
 ```
 
 Each index uses an internal concept set by default. To apply a study-specific
 definition, supply a named `conceptSet` containing the required codelists. The
 available internal codelists can be inspected with `getIndexCodelist()`.
 
+
 ``` r
 getIndexCodelist("charlson")
+#> - aids (11 codes)
+#> - any_malignancy (716 codes)
+#> - cerebrovascular_disease (129 codes)
+#> - chronic_pulmonary_disease (92 codes)
+#> - congestive_heart_failure (41 codes)
+#> - connective_tissue_disease (60 codes)
+#> along with 11 more codelists
 ```
 
 ### Clinical covariates
@@ -139,6 +162,7 @@ getIndexCodelist("charlson")
 ingredients in its window. Here BMI is taken from the last measurement in the
 preceding year and polypharmacy is assessed over the preceding 30 days.
 
+
 ``` r
 clinical <- cdm$cohort |>
   addBMI(window = c(-365, 0), order = "last") |>
@@ -147,6 +171,13 @@ clinical <- cdm$cohort |>
 clinical |>
   select(subject_id, cohort_start_date, bmi, polypharmacy_count) |>
   glimpse()
+#> Rows: ??
+#> Columns: 4
+#> Database: DuckDB 1.5.5 [root@Darwin 25.6.0:R 4.4.1//private/var/folders/pl/k11lm9710hlgl02nvzx4z9wr0000gp/T/Rtmpl3dLrW/file6c1d5e3b0504.duckdb]
+#> $ subject_id         <int> 3946, 1309, 1303, 5277, 2206, 5213, 4668, 4691, 223…
+#> $ cohort_start_date  <date> 1992-06-28, 1980-09-24, 2013-07-17, 1983-07-01, 20…
+#> $ bmi                <int> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+#> $ polypharmacy_count <int> 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 3, 1, 2, 2, 2, 2, …
 ```
 
 ### Demographics
@@ -155,6 +186,7 @@ clinical |>
 `person` table in sequence. `addLocation()` first uses `location_id` and then
 falls back to the location associated with `care_site_id`. Missing values can
 be replaced with study-specific labels.
+
 
 ``` r
 demographics <- cdm$cohort |>
@@ -168,6 +200,13 @@ demographics <- cdm$cohort |>
 demographics |>
   select(subject_id, cohort_start_date, ethnicity, location) |>
   glimpse()
+#> Rows: ??
+#> Columns: 4
+#> Database: DuckDB 1.5.5 [root@Darwin 25.6.0:R 4.4.1//private/var/folders/pl/k11lm9710hlgl02nvzx4z9wr0000gp/T/Rtmpl3dLrW/file6c1d5e3b0504.duckdb]
+#> $ subject_id        <int> 3946, 1309, 1303, 5277, 2206, 5213, 4668, 4691, 2237…
+#> $ cohort_start_date <date> 1992-06-28, 1980-09-24, 2013-07-17, 1983-07-01, 201…
+#> $ ethnicity         <chr> "Unknown", "Unknown", "Unknown", "Unknown", "Unknown…
+#> $ location          <chr> "Unknown", "Unknown", "Unknown", "Unknown", "Unknown…
 ```
 
 ### Socioeconomic status
@@ -176,6 +215,7 @@ Socioeconomic status can be derived from Townsend deprivation scores, the
 Index of Multiple Deprivation (IMD), or a prioritised combination of both. The
 following example retains the two source-specific outputs and also creates a
 combined value that prefers IMD and falls back to Townsend.
+
 
 ``` r
 socioeconomic <- cdm$cohort |>
@@ -190,6 +230,14 @@ socioeconomic |>
   select(subject_id, cohort_start_date, townsend, imd,
          socio_economic_status) |>
   glimpse()
+#> Rows: ??
+#> Columns: 5
+#> Database: DuckDB 1.5.5 [root@Darwin 25.6.0:R 4.4.1//private/var/folders/pl/k11lm9710hlgl02nvzx4z9wr0000gp/T/Rtmpl3dLrW/file6c1d5e3b0504.duckdb]
+#> $ subject_id            <int> 3946, 1309, 1303, 5277, 2206, 5213, 4668, 4691, …
+#> $ cohort_start_date     <date> 1992-06-28, 1980-09-24, 2013-07-17, 1983-07-01,…
+#> $ townsend              <chr> "Missing", "Missing", "Missing", "Missing", "Mis…
+#> $ imd                   <chr> "Missing", "Missing", "Missing", "Missing", "Mis…
+#> $ socio_economic_status <chr> "Missing", "Missing", "Missing", "Missing", "Mis…
 ```
 
 The default codelists and output names are suitable for exploratory use, but

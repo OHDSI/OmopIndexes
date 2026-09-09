@@ -23,9 +23,9 @@ The core functions in **OmopIndices** add indexes to a table:
 - `addHospitalFrailtyRiskScore()`
 - `addElectronicFrailtyIndex()`
 
-These indices depend on a set of codelists, these codelist can be provided by
-the user using the `conceptSet` argument. If not provided the package contain
-its own definition for each one of the codelist.
+These indices depend on a set of codelists. These codelists can be provided by
+the user using the `conceptSet` argument. If not provided, the package contains
+its own definition for each codelist.
 
 You can get the default codelists of a given index with `getIndexCodelist()`:
 
@@ -78,9 +78,10 @@ assess how well the involved codelists are recorded you can easily do that using
 ### CodelistGenerator
 
 ```{r, eval=FALSE}
-library(CodelistGenerator)
-library(OmopIndices)
 library(omock)
+library(duckdb)
+library(OmopIndices)
+library(CodelistGenerator)
 
 cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 
@@ -94,10 +95,11 @@ tableCodeUse(result = codeUse)
 ### PhenotypeR
 
 ```{r, eval=FALSE}
-library(PhenotypeR)
-library(CohortConstructor)
-library(OmopIndices)
 library(omock)
+library(duckdb)
+library(OmopIndices)
+library(CohortConstructor)
+library(PhenotypeR)
 
 cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 

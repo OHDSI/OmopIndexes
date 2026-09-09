@@ -19,7 +19,25 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' library(omock)
+#' library(duckdb)
 #' library(OmopIndices)
+#' library(dplyr)
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
+#'
+#' cdm$cohort |>
+#'   addBMI(window = c(-365, 0), order = "last") |>
+#'   select(subject_id, cohort_start_date, bmi) |>
+#'   glimpse()
+#' }
 #'
 addBMI <- function(x,
                    conceptSet = NULL,

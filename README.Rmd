@@ -8,6 +8,8 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  message = FALSE,
+  warning = FALSE,
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
@@ -28,7 +30,7 @@ and covariates directly from OMOP CDM database instances.
 
 ## Ecosystem
 
-*OmopIndices* is part of the ecosystem of packages defined by 
+*OmopIndices* is part of the ecosystem of packages defined by
 [omopgenerics](https://darwin-eu.github.io/omopgenerics/). For more details on
 the ecosystem you can read the [Tidy R programming with the OMOP Common Data Model](https://ohdsi.github.io/Tidy-R-programming-with-OMOP/)
 book.
@@ -126,8 +128,8 @@ comorbidity <- cdm$cohort |>
   )
 
 comorbidity |>
-  select(subject_id, cohort_start_date, charlson, updated_charlson, efi, hfrs,
-         hfrs_categories) |>
+  select(subject_id, cohort_start_date, charlson, updated_charlson, efi,
+         efi_categories, hfrs, hfrs_categories) |>
   glimpse()
 ```
 
@@ -198,6 +200,10 @@ socioeconomic |>
          socio_economic_status) |>
   glimpse()
 ```
+
+The default codelists and output names are suitable for exploratory use, but
+for a reproducible analysis you should specify the concept set, date window,
+selection order, and output name required by the study protocol.
 
 ## Function reference
 

@@ -43,3 +43,25 @@ Deprivation value.
 Add socioeconomic status as a column to a table using the
 \href{https://athena.ohdsi.org/search-terms/terms/35812882}{Index of Multiple Deprivation}
 }
+\examples{
+\donttest{
+library(omock)
+library(duckdb)
+library(OmopIndices)
+library(dplyr)
+library(CohortConstructor)
+
+cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+cdm$cohort <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+  name = "cohort"
+)
+
+cdm$cohort |>
+  addIndexOfMultipleDeprivation() |>
+  select(subject_id, cohort_start_date, socio_economic_status) |>
+  glimpse()
+}
+
+}

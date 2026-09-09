@@ -41,14 +41,24 @@ The table \code{x} with a new column containing the patient's location.
 Add the location to a table
 }
 \examples{
-library(OmopIndices)
+\donttest{
 library(omock)
+library(duckdb)
+library(OmopIndices)
 library(dplyr)
+library(CohortConstructor)
 
-cdm <- mockCdmFromDataset(source = "duckdb")
+cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+cdm$cohort <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+  name = "cohort"
+)
 
-cdm$condition_occurrence |>
+cdm$cohort |>
   addLocation() |>
+  select(subject_id, cohort_start_date, location) |>
   glimpse()
+}
 
 }
