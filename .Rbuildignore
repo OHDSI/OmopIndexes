@@ -10,4 +10,4 @@
 ^codecov\.yml$
 ^data-raw$
 ^vignettes/articles$
-hexsticker.pptx
+^hexsticker$
