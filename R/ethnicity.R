@@ -22,7 +22,7 @@
 #' [NHS Ethnic Category](https://athena.ohdsi.org/search-terms/terms?vocabulary=NHS+Ethnic+Category).
 #' - **nhs-groups** to assign ethnicity using broad groups of
 #' [NHS Ethnic Category](https://athena.ohdsi.org/search-terms/terms?vocabulary=NHS+Ethnic+Category)
-#' as described in <https://doi.org/10.1038/s41597-024-02958-1>.
+#' as described in \doi{10.1038/s41597-024-02958-1}.
 #' @inheritParams nameStyleDoc
 #' @inheritParams nameDoc
 #' @param missingEthnicityValue A character string used to replace missing

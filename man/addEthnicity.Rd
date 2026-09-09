@@ -38,7 +38,7 @@ column \code{race_source_value} in the \code{person} table.
 \href{https://athena.ohdsi.org/search-terms/terms?vocabulary=NHS+Ethnic+Category}{NHS Ethnic Category}.
 \item \strong{nhs-groups} to assign ethnicity using broad groups of
 \href{https://athena.ohdsi.org/search-terms/terms?vocabulary=NHS+Ethnic+Category}{NHS Ethnic Category}
-as described in \url{https://doi.org/10.1038/s41597-024-02958-1}.
+as described in \doi{10.1038/s41597-024-02958-1}.
 }}
 
 \item{nameStyle}{A character string specifying the name of the new column.}
