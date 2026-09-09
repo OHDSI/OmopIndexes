@@ -5,14 +5,15 @@
 #'
 #' @inheritParams xDoc
 #' @inheritParams indexDateDoc
-#' @param ageAdjusted Whether to calculate the Age-Adjusted Comorbidity Index (TRUE) or not (FALSE)
+#' @param ageAdjusted Logical; whether to include age adjustment in the
+#' Charlson Comorbidity Index.
 #' @param conceptSet `r documentationConceptSet(requiredConcepts$charlson)`
 #' @inheritParams categoriesDoc
 #' @inheritParams nameStyleDoc
 #' @inheritParams nameDoc
 #'
-#' @returns The table `x` with a new column column with the corresponding
-#' Charlson index value.
+#' @returns The table `x` with a new column containing the Charlson Comorbidity
+#' Index value.
 #'
 #' @export
 #'
@@ -66,4 +67,3 @@ addCharlsonIndex <- function(x,
   )
 
 }
-

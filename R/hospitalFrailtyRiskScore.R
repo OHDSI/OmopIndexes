@@ -10,8 +10,8 @@
 #' @inheritParams nameStyleDoc
 #' @inheritParams nameDoc
 #'
-#' @returns The `x` table with a new column added with the hospital
-#' frailty risk score of the patient.
+#' @returns The table `x` with a new column containing the Hospital Frailty Risk
+#' Score value.
 #'
 #' @export
 #'

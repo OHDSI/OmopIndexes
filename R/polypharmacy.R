@@ -1,17 +1,18 @@
 
-#' Add the maximum number of ingredients an individual is exposed simultaneously
-#' in a certain window
+#' Add the maximum number of ingredients to which an individual is simultaneously
+#' exposed within a specified window
 #'
-#' @param x A `cdm_table` object.
-#' @param indexDate Name of a 'date' column that indicates the index date.
-#' @param window Window of interest.
-#' @param overlap Whether exposures must overlap in time or merely occur within
-#' the window of interest.
-#' @param nameStyle Name of the new column.
-#' @param name Name of the new table.
+#' @inheritParams xDoc
+#' @inheritParams indexDateDoc
+#' @param window `r documentationWindow("polypharmacy")`
+#' @param overlap Logical; if `TRUE`, count drug eras that overlap in time. If
+#' `FALSE`, count drug eras that occur within the window without requiring them
+#' to overlap one another.
+#' @inheritParams nameStyleDoc
+#' @inheritParams nameDoc
 #'
-#' @returns The table `x` with a new column column with the number of
-#' ingredients used in the window of interest.
+#' @returns The table `x` with a new column containing the maximum number of
+#' simultaneous ingredients in the window of interest.
 #' @export
 #'
 #' @examples

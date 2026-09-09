@@ -10,7 +10,8 @@
 #' @inheritParams nameStyleDoc
 #' @inheritParams nameDoc
 #'
-#' @returns The `x` table with a new column added with the eFI of the patient.
+#' @returns The table `x` with a new column containing the Electronic Frailty
+#' Index value.
 #'
 #' @export
 #'

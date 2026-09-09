@@ -16,27 +16,30 @@ addUpdatedCharlsonIndex(
 )
 }
 \arguments{
-\item{x}{A \code{cdm_table} object, it mus contain \code{person_id} or \code{subject_id} as
-columns.}
+\item{x}{A \code{cdm_table} containing a person identifier column named
+\code{person_id} or \code{subject_id}.}
 
-\item{indexDate}{A character string that points to a \code{Date} column in the \code{x}
-table.}
+\item{indexDate}{A character string naming the \code{Date} column in \code{x} that
+defines the index date.}
 
-\item{ageAdjusted}{Whether to calculate the Age-Adjusted Comorbidity Index (TRUE) or not (FALSE)}
+\item{ageAdjusted}{Logical; whether to include age adjustment in the updated
+Charlson Comorbidity Index.}
 
-\item{conceptSet}{It can either be a \if{html}{\out{<codelist>}}, <codelist_with_details> or <concept_set_expression> object. It must contain \code{congestive_heart_failure}, \code{dementia}, \code{chronic_pulmonary_disease}, \code{connective_tissue_disease}, \code{mild_liver_disease}, \code{hemiplegia}, \code{severe_chronic_kidney_disease}, \code{diabetes_with_complication}, \code{any_malignancy}, \code{moderate_or_severe_liver_disease}, \code{metastatic_solid_tumor}, \code{aids} as concepts. By default internal concepts are used.}
+\item{conceptSet}{A named concept set supplied as a \if{html}{\out{<codelist>}}, <codelist_with_details>, <concept_set_expression>, or named list of concept IDs. It must contain \code{congestive_heart_failure}, \code{dementia}, \code{chronic_pulmonary_disease}, \code{connective_tissue_disease}, \code{mild_liver_disease}, \code{hemiplegia}, \code{severe_chronic_kidney_disease}, \code{diabetes_with_complication}, \code{any_malignancy}, \code{moderate_or_severe_liver_disease}, \code{metastatic_solid_tumor}, \code{aids} as concepts. By default, internal codelists are used.}
 
-\item{nameStyle}{A character string with the name of the new column.}
+\item{nameStyle}{A character string specifying the name of the new column.}
 
-\item{categories}{Named list of categories to group the values. A new column named
-'\{nameStyle\}_categories' will be added with the different groups.}
+\item{categories}{A named list of numeric vectors, each containing the lower
+and upper bounds of a score interval. An additional column with the suffix
+\verb{_categories} is added. Intervals are
+evaluated in the order supplied, and missing scores are labelled \code{missing}.}
 
-\item{name}{A character string with the name of the new table. If \code{NULL} a
-temporary table will be created.}
+\item{name}{A character string specifying the name of the output table. If
+\code{NULL}, a temporary table is created.}
 }
 \value{
-The table \code{x} with a new column column with the corresponding
-Charlson index value.
+The table \code{x} with a new column containing the updated Charlson
+Comorbidity Index value.
 }
 \description{
 Add Updated Charlson Comorbidity Index (CCI) value based on

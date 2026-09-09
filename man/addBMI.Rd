@@ -17,37 +17,34 @@ addBMI(
 )
 }
 \arguments{
-\item{x}{A \code{cdm_table} object, it mus contain \code{person_id} or \code{subject_id} as
-columns.}
+\item{x}{A \code{cdm_table} containing a person identifier column named
+\code{person_id} or \code{subject_id}.}
 
-\item{conceptSet}{It can either be a \if{html}{\out{<codelist>}}, <codelist_with_details> or <concept_set_expression> object. It must contain \code{obesity}, \code{bmi} as concepts. By default internal concepts are used.}
+\item{conceptSet}{A named concept set supplied as a \if{html}{\out{<codelist>}}, <codelist_with_details>, <concept_set_expression>, or named list of concept IDs. It must contain \code{obesity}, \code{bmi} as concepts. By default, internal codelists are used.}
 
-\item{indexDate}{A character string that points to a \code{Date} column in the \code{x}
-table.}
+\item{indexDate}{A character string naming the \code{Date} column in \code{x} that
+defines the index date.}
 
-\item{window}{Window to asses \code{obesity} in, it must be a vector of two numeric values \code{c(min, max)}. Window times refer to days since \code{indexDate}.}
+\item{window}{A numeric vector of length two, \code{c(min, max)}, defining the window for \code{BMI} in days relative to \code{indexDate}. Use \code{-Inf} or \code{Inf} for an unbounded lower or upper limit.}
 
-\item{order}{A character vector with the options to deal with multiple values
-per person:
-\itemize{
-\item \code{last}: Latest value within the window.
-\item \code{first}: First value within the window.
-\item \code{max}: Maximum value within the window.
-\item \code{min}: Minimum value within the window.
-}}
+\item{order}{A character string specifying how to select among multiple BMI
+measurements within the window: \code{last} (latest), \code{first} (earliest), \code{max}
+(highest), or \code{min} (lowest).}
 
-\item{nameStyle}{A character string with the name of the new column.}
+\item{nameStyle}{A character string specifying the name of the new column.}
 
-\item{categories}{List to group the \code{bmi} records into categories.}
+\item{categories}{A named list of numeric vectors, each containing the lower
+and upper bounds of a BMI interval. An additional categorical column is
+added, and missing BMI values are labelled \code{missing}.}
 
-\item{inObservation}{Whether to restrict to records within the observation
-period.}
+\item{inObservation}{Logical; whether to restrict records to the person's
+observation period.}
 
-\item{name}{A character string with the name of the new table. If \code{NULL} a
-temporary table will be created.}
+\item{name}{A character string specifying the name of the output table. If
+\code{NULL}, a temporary table is created.}
 }
 \value{
-A new table with the new column.
+The table \code{x} with a new column containing the selected BMI value.
 }
 \description{
 Add Body Mass Index measurement

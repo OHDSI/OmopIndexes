@@ -2,8 +2,8 @@
 % Please edit documentation in R/polypharmacy.R
 \name{addPolypharmacyCount}
 \alias{addPolypharmacyCount}
-\title{Add the maximum number of ingredients an individual is exposed simultaneously
-in a certain window}
+\title{Add the maximum number of ingredients to which an individual is simultaneously
+exposed within a specified window}
 \usage{
 addPolypharmacyCount(
   x,
@@ -15,26 +15,30 @@ addPolypharmacyCount(
 )
 }
 \arguments{
-\item{x}{A \code{cdm_table} object.}
+\item{x}{A \code{cdm_table} containing a person identifier column named
+\code{person_id} or \code{subject_id}.}
 
-\item{indexDate}{Name of a 'date' column that indicates the index date.}
+\item{indexDate}{A character string naming the \code{Date} column in \code{x} that
+defines the index date.}
 
-\item{window}{Window of interest.}
+\item{window}{A numeric vector of length two, \code{c(min, max)}, defining the window for \code{polypharmacy} in days relative to \code{indexDate}. Use \code{-Inf} or \code{Inf} for an unbounded lower or upper limit.}
 
-\item{overlap}{Whether exposures must overlap in time or merely occur within
-the window of interest.}
+\item{overlap}{Logical; if \code{TRUE}, count drug eras that overlap in time. If
+\code{FALSE}, count drug eras that occur within the window without requiring them
+to overlap one another.}
 
-\item{nameStyle}{Name of the new column.}
+\item{nameStyle}{A character string specifying the name of the new column.}
 
-\item{name}{Name of the new table.}
+\item{name}{A character string specifying the name of the output table. If
+\code{NULL}, a temporary table is created.}
 }
 \value{
-The table \code{x} with a new column column with the number of
-ingredients used in the window of interest.
+The table \code{x} with a new column containing the maximum number of
+simultaneous ingredients in the window of interest.
 }
 \description{
-Add the maximum number of ingredients an individual is exposed simultaneously
-in a certain window
+Add the maximum number of ingredients to which an individual is simultaneously
+exposed within a specified window
 }
 \examples{
 \donttest{

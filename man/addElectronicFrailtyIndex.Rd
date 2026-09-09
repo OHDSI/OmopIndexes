@@ -16,24 +16,27 @@ addElectronicFrailtyIndex(
 )
 }
 \arguments{
-\item{x}{A \code{cdm_table} object, it mus contain \code{person_id} or \code{subject_id} as
-columns.}
+\item{x}{A \code{cdm_table} containing a person identifier column named
+\code{person_id} or \code{subject_id}.}
 
-\item{indexDate}{A character string that points to a \code{Date} column in the \code{x}
-table.}
+\item{indexDate}{A character string naming the \code{Date} column in \code{x} that
+defines the index date.}
 
-\item{conceptSet}{It can either be a \if{html}{\out{<codelist>}}, <codelist_with_details> or <concept_set_expression> object. It must contain \code{activity_limitation}, \code{anemia}, \code{arthritis}, \code{atrial_fibrillation}, \code{cerebrovascular_disease}, \code{chronic_kidney_disease}, \code{diabetes}, \code{dizziness}, \code{dyspnea}, \code{falls}, \code{foot_problem}, \code{fragility_fracture}, \code{hearing_impairment}, \code{heart_failure}, \code{heart_valve_disorder}, \code{housebound}, \code{hypertension}, \code{hypotension_syncope}, \code{ischemic_heart_disease}, \code{memory_cognitive_disorder}, \code{mobility_problems}, \code{osteoporosis}, \code{parkinsonism_tremor}, \code{peptic_ulcer}, \code{peripheral_vascular_disease}, \code{care_requirement}, \code{respiratory_disease}, \code{skin_ulcer}, \code{sleep_disturbance}, \code{social_vulnerability}, \code{thyroid_disease}, \code{urinary_incontinence}, \code{urinary_system_disease}, \code{visual_impairment}, \code{weight_loss_anorexia} as concepts. By default internal concepts are used.}
+\item{conceptSet}{A named concept set supplied as a \if{html}{\out{<codelist>}}, <codelist_with_details>, <concept_set_expression>, or named list of concept IDs. It must contain \code{activity_limitation}, \code{anemia}, \code{arthritis}, \code{atrial_fibrillation}, \code{cerebrovascular_disease}, \code{chronic_kidney_disease}, \code{diabetes}, \code{dizziness}, \code{dyspnea}, \code{falls}, \code{foot_problem}, \code{fragility_fracture}, \code{hearing_impairment}, \code{heart_failure}, \code{heart_valve_disorder}, \code{housebound}, \code{hypertension}, \code{hypotension_syncope}, \code{ischemic_heart_disease}, \code{memory_cognitive_disorder}, \code{mobility_problems}, \code{osteoporosis}, \code{parkinsonism_tremor}, \code{peptic_ulcer}, \code{peripheral_vascular_disease}, \code{care_requirement}, \code{respiratory_disease}, \code{skin_ulcer}, \code{sleep_disturbance}, \code{social_vulnerability}, \code{thyroid_disease}, \code{urinary_incontinence}, \code{urinary_system_disease}, \code{visual_impairment}, \code{weight_loss_anorexia} as concepts. By default, internal codelists are used.}
 
-\item{categories}{Named list of categories to group the values. A new column named
-'\{nameStyle\}_categories' will be added with the different groups.}
+\item{categories}{A named list of numeric vectors, each containing the lower
+and upper bounds of a score interval. An additional column with the suffix
+\verb{_categories} is added. Intervals are
+evaluated in the order supplied, and missing scores are labelled \code{missing}.}
 
-\item{nameStyle}{A character string with the name of the new column.}
+\item{nameStyle}{A character string specifying the name of the new column.}
 
-\item{name}{A character string with the name of the new table. If \code{NULL} a
-temporary table will be created.}
+\item{name}{A character string specifying the name of the output table. If
+\code{NULL}, a temporary table is created.}
 }
 \value{
-The \code{x} table with a new column added with the eFI of the patient.
+The table \code{x} with a new column containing the Electronic Frailty
+Index value.
 }
 \description{
 Add Electronic Frailty Index (eFI) value based on
