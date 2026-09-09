@@ -27,8 +27,8 @@ documentationWindow <- function(fun) {
 
 documentationConceptSet <- function(cs) {
   paste0(
-    "A named concept set supplied as a <codelist>, <codelist_with_details>, ",
-    "<concept_set_expression>, or named list of concept IDs. It must contain `",
+    "A named concept set supplied as a `codelist`, `codelist_with_details`, ",
+    "`concept_set_expression`, or named list of concept IDs. It must contain `",
     paste0(cs, collapse = "`, `"), "` as concepts. By default, internal ",
     "codelists are used."
   )

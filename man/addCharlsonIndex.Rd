@@ -3,8 +3,8 @@
 \name{addCharlsonIndex}
 \alias{addCharlsonIndex}
 \title{Add Charlson Comorbidity Index (CCI) value based on
-\href{https://doi.org/10.1016/0021-9681(87)90171-8}{Charlson et al. (1987)} and
-\href{https://doi.org/10.1016/0895-4356(94)90129-5}{Charlson et al. (1994)}
+Charlson et al. (1987) (\doi{10.1016/0021-9681(87)90171-8}) and
+Charlson et al. (1994) (\doi{10.1016/0895-4356(94)90129-5})
 (age-adjusted) version.}
 \usage{
 addCharlsonIndex(
@@ -27,7 +27,7 @@ defines the index date.}
 \item{ageAdjusted}{Logical; whether to include age adjustment in the
 Charlson Comorbidity Index.}
 
-\item{conceptSet}{A named concept set supplied as a \if{html}{\out{<codelist>}}, <codelist_with_details>, <concept_set_expression>, or named list of concept IDs. It must contain \code{myocardial_infarction}, \code{congestive_heart_failure}, \code{peripheral_vascular_disease}, \code{cerebrovascular_disease}, \code{dementia}, \code{chronic_pulmonary_disease}, \code{connective_tissue_disease}, \code{peptic_ulcer_disease}, \code{mild_liver_disease}, \code{diabetes_without_complication}, \code{hemiplegia}, \code{severe_chronic_kidney_disease}, \code{diabetes_with_complication}, \code{any_malignancy}, \code{moderate_or_severe_liver_disease}, \code{metastatic_solid_tumor}, \code{aids} as concepts. By default, internal codelists are used.}
+\item{conceptSet}{A named concept set supplied as a \code{codelist}, \code{codelist_with_details}, \code{concept_set_expression}, or named list of concept IDs. It must contain \code{myocardial_infarction}, \code{congestive_heart_failure}, \code{peripheral_vascular_disease}, \code{cerebrovascular_disease}, \code{dementia}, \code{chronic_pulmonary_disease}, \code{connective_tissue_disease}, \code{peptic_ulcer_disease}, \code{mild_liver_disease}, \code{diabetes_without_complication}, \code{hemiplegia}, \code{severe_chronic_kidney_disease}, \code{diabetes_with_complication}, \code{any_malignancy}, \code{moderate_or_severe_liver_disease}, \code{metastatic_solid_tumor}, \code{aids} as concepts. By default, internal codelists are used.}
 
 \item{nameStyle}{A character string specifying the name of the new column.}
 
@@ -45,8 +45,8 @@ Index value.
 }
 \description{
 Add Charlson Comorbidity Index (CCI) value based on
-\href{https://doi.org/10.1016/0021-9681(87)90171-8}{Charlson et al. (1987)} and
-\href{https://doi.org/10.1016/0895-4356(94)90129-5}{Charlson et al. (1994)}
+Charlson et al. (1987) (\doi{10.1016/0021-9681(87)90171-8}) and
+Charlson et al. (1994) (\doi{10.1016/0895-4356(94)90129-5})
 (age-adjusted) version.
 }
 \examples{

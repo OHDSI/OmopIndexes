@@ -39,7 +39,7 @@ You can explore the different codelists here:
 
 ```{r, echo=FALSE}
 library(htmltools)
-load(file = here::here("vignettes/articles/selectors.RData"))
+load(file = here::here("vignettes", "articles", "selectors.RData"))
 ```
 
 ## Overview of codelists {.tabset}

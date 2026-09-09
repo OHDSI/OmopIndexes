@@ -138,22 +138,8 @@ getRecords <- function(tables, cdm, conceptSet, records, window, nm) {
         rec <- rec |>
           dplyr::mutate(date_diff = clock::date_count_between(
             start = .data$index_date, end = .data$bmi_date, precision = "day"
-          ))
-        if (is.infinite(window[1])) {
-          rec <- rec |>
-            dplyr::filter(.data$date_diff <= !!window[2])
-        } else {
-          if (is.infinite(window[2])) {
-            rec <- rec |>
-              dplyr::filter(!!window[1] <= .data$date_diff)
-          } else {
-            rec <- rec |>
-              dplyr::filter(
-                !!.env$window[1] <= .data$date_diff &
-                  .data$date_diff <= !!window[2]
-              )
-          }
-        }
+          )) |>
+          filterWindow(diff = "date_diff", window = window)
       }
       return(rec)
     }) |>
