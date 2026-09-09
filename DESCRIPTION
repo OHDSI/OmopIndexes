@@ -44,7 +44,7 @@ Imports:
     cli,
     clock,
     dplyr,
-    omopgenerics,
+    omopgenerics (>= 1.4.0),
     PatientProfiles,
     purrr,
     rlang
