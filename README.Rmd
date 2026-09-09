@@ -89,8 +89,20 @@ package.
 library(omock)
 library(duckdb)
 library(OmopIndices)
+library(dplyr)
+library(CohortConstructor)
 
 cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+```
+
+Let's create a *sinusitis* cohort to use as a mock example.
+
+```{r}
+cdm$cohort <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+  name = "cohort"
+)
 ```
 
 ### `addLocation()`
@@ -102,9 +114,7 @@ location is found through the first source. The value is taken from
 `location_source_value` by default, and can instead be returned from fields
 such as `city`, `state`, `zip`, or `country_source_value`.
 
-```{r, eval = FALSE}
-library(dplyr)
-
+```{r}
 locations <- cdm$cohort |>
   addLocation(
     from = c("location_id", "care_site_id"),
@@ -124,9 +134,7 @@ index date is `cohort_start_date`; use `indexDate` to point to another date
 column. Windows are expressed in days relative to the index date, so
 `c(-365, 0)` means the year before and including the index date.
 
-```{r, eval = FALSE}
-library(dplyr)
-
+```{r}
 cohort <- cdm$cohort |>
   addCharlsonIndex(ageAdjusted = TRUE) |>
   addElectronicFrailtyIndex() |>
@@ -137,7 +145,7 @@ cohort <- cdm$cohort |>
   addLocation()
 
 cohort |>
-  select(person_id, cohort_start_date, charlson_index, efi, hfrs, bmi,
+  select(person_id, cohort_start_date, charlson, efi, hfrs, bmi,
          polypharmacy_count, ethnicity, location) |>
   glimpse()
 ```
@@ -148,7 +156,7 @@ For reproducible analyses, specify the concept set and output names explicitly
 when defaults do not match the study protocol. Index functions accept a named
 `categories` list to add labelled categories alongside the score, for example:
 
-```{r, eval = FALSE}
+```{r}
 cohort <- cdm$cohort |>
   addHospitalFrailtyRiskScore(
     window = c(-365, 0),
@@ -159,6 +167,10 @@ cohort <- cdm$cohort |>
     ),
     nameStyle = "hospital_frailty_risk"
   )
+
+cohort |>
+  select(person_id, cohort_start_date, hfrs, hfrs_categories) |>
+  glimpse()
 ```
 
 `addBMI()` can select the first, last, minimum, or maximum measurement in a
