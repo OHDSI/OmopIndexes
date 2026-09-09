@@ -95,6 +95,28 @@ cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 
 ### `addLocation()`
 
+`addLocation()` adds a person's location to a cohort or person-level table by
+looking up the person's `location_id` in the OMOP `location` table. By default,
+it falls back to the location associated with the person's `care_site_id` when
+the first lookup is not available. The value is taken from
+`location_source_value` by default, and can instead be returned from fields
+such as `city`, `state`, `zip`, or `country_source_value`.
+
+```{r, eval = FALSE}
+library(dplyr)
+
+locations <- cdm$cohort |>
+  addLocation(
+    from = c("location_id", "care_site_id"),
+    locationSource = "location_source_value",
+    missingLocationValue = "Unknown"
+  )
+
+locations |>
+  select(person_id, cohort_start_date, location) |>
+  glimpse()
+```
+
 ## A complete example
 
 The following example derives several measures for a cohort. The default
