@@ -3,24 +3,41 @@
 #'
 #' @inheritParams xDoc
 #' @inheritParams indexDateDoc
-#' @param window `r documentationWindow("obesity")`
+#' @param window `r documentationWindow("BMI")`
 #' @param conceptSet `r documentationConceptSet(c("obesity", "bmi"))`
-#' @param order A character vector with the options to deal with multiple values
-#' per person:
-#'   - `last`: Latest value within the window.
-#'   - `first`: First value within the window.
-#'   - `max`: Maximum value within the window.
-#'   - `min`: Minimum value within the window.
-#' @param categories List to group the `bmi` records into categories.
+#' @param order A character string specifying how to select among multiple BMI
+#' measurements within the window: `last` (latest), `first` (earliest), `max`
+#' (highest), or `min` (lowest).
+#' @param categories A named list of numeric vectors, each containing the lower
+#' and upper bounds of a BMI interval. An additional categorical column is
+#' added, and missing BMI values are labelled `missing`.
 #' @inheritParams nameStyleDoc
 #' @inheritParams inObservationDoc
 #' @inheritParams nameDoc
 #'
-#' @returns A new table with the new column.
+#' @returns The table `x` with a new column containing the selected BMI value.
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' library(omock)
+#' library(duckdb)
 #' library(OmopIndices)
+#' library(dplyr)
+#' library(CohortConstructor)
+#'
+#' cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
+#' cdm$cohort <- conceptCohort(
+#'   cdm = cdm,
+#'   conceptSet = list(sinusitis = c(257012L, 4283893L, 4294548L, 40481087L)),
+#'   name = "cohort"
+#' )
+#'
+#' cdm$cohort |>
+#'   addBMI(window = c(-365, 0), order = "last") |>
+#'   select(subject_id, cohort_start_date, bmi) |>
+#'   glimpse()
+#' }
 #'
 addBMI <- function(x,
                    conceptSet = NULL,
@@ -121,22 +138,8 @@ getRecords <- function(tables, cdm, conceptSet, records, window, nm) {
         rec <- rec |>
           dplyr::mutate(date_diff = clock::date_count_between(
             start = .data$index_date, end = .data$bmi_date, precision = "day"
-          ))
-        if (is.infinite(window[1])) {
-          rec <- rec |>
-            dplyr::filter(.data$date_diff <= !!window[2])
-        } else {
-          if (is.infinite(window[2])) {
-            rec <- rec |>
-              dplyr::filter(!!window[1] <= .data$date_diff)
-          } else {
-            rec <- rec |>
-              dplyr::filter(
-                !!.env$window[1] <= .data$date_diff &
-                  .data$date_diff <= !!window[2]
-              )
-          }
-        }
+          )) |>
+          filterWindow(diff = "date_diff", window = window)
       }
       return(rec)
     }) |>
