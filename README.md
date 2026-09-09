@@ -16,7 +16,7 @@ coverage](https://codecov.io/gh/OHDSI/OmopIndices/graph/badge.svg)](https://app.
 
 The goal of **OmopIndices** is to enable standardised and reproducible
 derivation of clinically and epidemiologically relevant patient-level
-indexes and covariates directly from OMOP CDM databases instances.
+indexes and covariates directly from OMOP CDM database instances.
 
 ## Ecosystem
 
@@ -31,7 +31,7 @@ Model](https://ohdsi.github.io/Tidy-R-programming-with-OMOP/) book.
 | Source | Driver | CDM reference | Status |
 |----|----|----|----|
 | Local R dataframe | N/A | `omopgenerics::cdmFromTables()` | ![](https://img.shields.io/github/actions/workflow/status/OHDSI/OmopIndices/test-weekly.yaml?branch=main&job=local-omopgenerics) |
-| In-memory duckdb datatabase | duckdb | `CDMConnector::cdmFromCon()` | ![](https://img.shields.io/github/actions/workflow/status/OHDSI/OmopIndices/test-weekly.yaml?branch=main&job=duckdb-CDMConnector) |
+| In-memory duckdb database | duckdb | `CDMConnector::cdmFromCon()` | ![](https://img.shields.io/github/actions/workflow/status/OHDSI/OmopIndices/test-weekly.yaml?branch=main&job=duckdb-CDMConnector) |
 
 ## Installation
 
@@ -65,17 +65,17 @@ that identifies the index date.
 | Socioeconomic status | `addSocioEconomicStatus()`, `addTownsend()`, `addIndexOfMultipleDeprivation()` | Townsend or IMD value |
 
 The index functions use OMOP concepts from the supplied `conceptSet` to find
-records in the requested window. When `conceptSet = NULL`, the package uses
-the corresponding concept sets from `OmopConcepts` where available. A concept
-set can also be supplied as a `codelist`, `codelist_with_details`, or
+records in the requested window. By default, the package uses internal concept
+sets that can be inspected using `getIndexCodelist()`. A concept set can also be
+supplied as a `codelist`, `codelist_with_details`, or
 `concept_set_expression` object.
 
 ## Examples
 
 ### Mock data
 
-For the purpose to illustrate the functionality of OmopIndices we will
-use the *GiBleed* database contained by the
+To illustrate the functionality of OmopIndices, we will use the *GiBleed*
+database contained by the
 [omock](https://ohdsi.github.io/omock/) package.
 
 ``` r
@@ -95,10 +95,10 @@ cdm <- mockCdmFromDataset(datasetName = "GiBleed", source = "duckdb")
 
 ### `addLocation()`
 
-`addLocation()` adds a person's location to a cohort or person-level table by
-looking up the person's `location_id` in the OMOP `location` table. By default,
-it falls back to the location associated with the person's `care_site_id` when
-the first lookup is not available. The value is taken from
+`addLocation()` adds a person's location to a cohort or person-level table. It
+first looks up the person's `location_id` in the OMOP `location` table, then
+falls back to the location associated with the person's `care_site_id` when no
+location is found through the first source. The value is taken from
 `location_source_value` by default, and can instead be returned from fields
 such as `city`, `state`, `zip`, or `country_source_value`.
 
