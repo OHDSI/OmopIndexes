@@ -4,11 +4,11 @@
 \name{OmopIndices-package}
 \alias{OmopIndices}
 \alias{OmopIndices-package}
-\title{OmopIndices: Patient-Level Indices from the OMOP Common Data Model Data}
+\title{OmopIndices: Patient-Level Indices from the OMOP Common Data Model}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides tools to derive standardised, reproducible patient-level indices and covariates from Observational Medical Outcomes Partnership Common Data Model (OMOP CDM) databases. Functions calculate comorbidity and frailty scores, including the Charlson Comorbidity Index, Electronic Frailty Index, and Hospital Frailty Risk Score, as well as body mass index, polypharmacy, ethnicity, location, and socioeconomic status measures.
+Provides tools to derive standardised, reproducible patient-level indices and covariates from Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM) databases. Functions calculate comorbidity and frailty scores, including the Charlson Comorbidity Index, Electronic Frailty Index, and Hospital Frailty Risk Score, as well as body mass index, polypharmacy, ethnicity, location, and socioeconomic status measures.
 }
 \seealso{
 Useful links:
