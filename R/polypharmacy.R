@@ -8,6 +8,7 @@
 #' @param overlap Logical; if `TRUE`, count drug eras that overlap in time. If
 #' `FALSE`, count drug eras that occur within the window without requiring them
 #' to overlap one another.
+#' @inheritParams categoriesDoc
 #' @inheritParams nameStyleDoc
 #' @inheritParams nameDoc
 #'
@@ -31,17 +32,18 @@
 #' )
 #'
 #' cdm$cohort |>
-#'   addPolypharmacyCount(window = c(-30, 0)) |>
-#'   select(subject_id, cohort_start_date, polypharmacy_count) |>
+#'   addPolypharmacy(window = c(-30, 0)) |>
+#'   select(subject_id, cohort_start_date, polypharmacy) |>
 #'   glimpse()
 #' }
 #'
-addPolypharmacyCount <- function(x,
-                                 indexDate = "cohort_start_date",
-                                 window = c(0, 0),
-                                 overlap = TRUE,
-                                 nameStyle = "polypharmacy_count",
-                                 name = tableName(x)) {
+addPolypharmacy <- function(x,
+                            indexDate = "cohort_start_date",
+                            window = c(0, 0),
+                            overlap = TRUE,
+                            categories = NULL,
+                            nameStyle = "polypharmacy",
+                            name = tableName(x)) {
   # input check
   x <- omopgenerics::validateCdmTable(table = x)
   personId <- omopgenerics::getPersonIdentifier(x = x)
@@ -56,6 +58,12 @@ addPolypharmacyCount <- function(x,
   if (is.na(name)) {
     name <- NULL
   }
+  omopgenerics::assertList(
+    categories,
+    named = TRUE,
+    class = "numeric",
+    null = TRUE
+  )
 
   if (nameStyle %in% colnames(x)) {
     cli::cli_warn(c("!" = "column {.var {nameStyle}} will be overwritten."))
@@ -74,6 +82,14 @@ addPolypharmacyCount <- function(x,
     x <- x |>
       dplyr::mutate(!!!q) |>
       dplyr::compute(name = name)
+    if (!is.null(categories)) {
+      qc <- qCategories(categories) |>
+        rlang::set_names(paste0(nameStyle, "_categories")) |>
+        rlang::parse_exprs()
+      x <- x |>
+        dplyr::mutate(!!!qc) |>
+        dplyr::compute(name = name)
+    }
     return(x)
   }
 
@@ -159,6 +175,15 @@ addPolypharmacyCount <- function(x,
       .fns = \(x) dplyr::coalesce(as.integer(x), 0L)
     )) |>
     dplyr::compute(name = name)
+
+  if (!is.null(categories)) {
+    qc <- qCategories(categories) |>
+      rlang::set_names(paste0(nameStyle, "_categories")) |>
+      rlang::parse_exprs()
+    x <- x |>
+      dplyr::mutate(!!!qc) |>
+      dplyr::compute(name = name)
+  }
 
   omopgenerics::dropSourceTable(cdm = cdm, name = dplyr::starts_with(pref))
 
