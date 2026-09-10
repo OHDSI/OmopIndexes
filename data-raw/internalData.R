@@ -250,6 +250,8 @@ if (nrow(x) > 0) {
 # check missing definitions
 # check extra definitions
 
+requiredConcepts$body_mass_index <- "bmi"
+
 # Save internal data ----
 usethis::use_data(
   requiredConcepts,

@@ -4,7 +4,7 @@
 #' @inheritParams xDoc
 #' @inheritParams indexDateDoc
 #' @param window `r documentationWindow("BMI")`
-#' @param conceptSet `r documentationConceptSet(c("obesity", "bmi"))`
+#' @param conceptSet `r documentationConceptSet("bmi")`
 #' @param order A character string specifying how to select among multiple BMI
 #' measurements within the window: `last` (latest), `first` (earliest), `max`
 #' (highest), or `min` (lowest).
@@ -54,7 +54,7 @@ addBMI <- function(x,
   indexDate <- validateIndexDate(indexDate, x)
   window <- validateWindow(window)
   window <- unlist(window)
-  conceptSet <- validateConceptSet(conceptSet, "bmi", cdm)
+  conceptSet <- validateConceptSet(conceptSet, "body_mass_index", cdm)
   nameStyle <- validateNameStyle(nameStyle, x)
   x <- omopgenerics::validateNewColumn(x, nameStyle)
   name <- validateName(name)

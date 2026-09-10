@@ -20,7 +20,7 @@ addBMI(
 \item{x}{A \code{cdm_table} containing a person identifier column named
 \code{person_id} or \code{subject_id}.}
 
-\item{conceptSet}{A named concept set supplied as a \code{codelist}, \code{codelist_with_details}, \code{concept_set_expression}, or named list of concept IDs. It must contain \code{obesity}, \code{bmi} as concepts. By default, internal codelists are used.}
+\item{conceptSet}{A named concept set supplied as a \code{codelist}, \code{codelist_with_details}, \code{concept_set_expression}, or named list of concept IDs. It must contain \code{bmi} as concepts. By default, internal codelists are used.}
 
 \item{indexDate}{A character string naming the \code{Date} column in \code{x} that
 defines the index date.}
