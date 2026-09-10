@@ -6,7 +6,7 @@
 \usage{
 addBMI(
   x,
-  conceptSet = NULL,
+  conceptSet = getIndexCodelist("body_mass_index"),
   indexDate = "cohort_start_date",
   window = c(-Inf, 0),
   order = "last",
@@ -34,8 +34,9 @@ measurements within the window: \code{last} (latest), \code{first} (earliest), \
 \item{nameStyle}{A character string specifying the name of the new column.}
 
 \item{categories}{A named list of numeric vectors, each containing the lower
-and upper bounds of a BMI interval. An additional categorical column is
-added, and missing BMI values are labelled \code{missing}.}
+and upper bounds of a BMI interval. An additional column named by appending
+\verb{_categories} to \code{nameStyle} is added, and missing BMI values are labelled
+\code{missing}.}
 
 \item{inObservation}{Logical; whether to restrict records to the person's
 observation period.}
