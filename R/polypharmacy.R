@@ -141,7 +141,7 @@ addPolypharmacyCount <- function(x,
       dplyr::summarise(!!!q) |>
       dplyr::compute(name = nm2)
   } else {
-    q <- "dplyr::n_distinct(.data$drug, na.rm = TRUE)" |>
+    q <- "dplyr::n_distinct(.data$drug)" |>
       rlang::set_names(nm = nameStyle) |>
       rlang::parse_exprs()
     x_counts <- x_counts |>
